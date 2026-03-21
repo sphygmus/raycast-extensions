@@ -54,7 +54,7 @@ export default function CharacterGridItem({
             }
           />
           <Action
-            title={pinned.includes(id) ? "Unpin Weapon" : "Pin Weapon"}
+            title={pinned.includes(id) ? "Unpin Character" : "Pin Character"}
             icon={pinned.includes(id) ? Icon.PinDisabled : Icon.Pin}
             style={
               pinned.includes(id)
