@@ -8,7 +8,7 @@ interface ArtifactPiece {
 
 interface ArtifactSetBonuses {
   "2pc": string;
-  "4pc": string;
+  "4pc"?: string;
 }
 
 interface ArtifactSet {

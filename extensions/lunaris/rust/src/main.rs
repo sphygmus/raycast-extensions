@@ -36,7 +36,7 @@ pub async fn generate_character_card(
     let target_h = (h as f32) as u32;
     let scaled_avatar = avatar.resize(w, target_h, imageops::FilterType::Lanczos3);
     let x_av = (w as i32 - scaled_avatar.width() as i32) / 2;
-    let y_av = (h as i32 - target_h as i32) / 2;
+    let y_av = (h as i32 - scaled_avatar.height() as i32) / 2;
     imageops::overlay(&mut canvas, &scaled_avatar, x_av as i64, y_av as i64);
 
     canvas

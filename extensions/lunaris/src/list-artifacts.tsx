@@ -23,7 +23,7 @@ export default function Command() {
       isShowingDetail
       searchBarAccessory={
         <List.Dropdown
-          tooltip="Filter Weapons"
+          tooltip="Filter Artifacts"
           onChange={(newValue) => setFilter(newValue)}
         >
           <List.Dropdown.Item key={"All"} title={"All"} value={"All"} />

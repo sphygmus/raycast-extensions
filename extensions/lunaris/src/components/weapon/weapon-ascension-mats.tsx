@@ -22,7 +22,12 @@ export default function WeaponAscensionMaterials({ id }: Props) {
 
   const materialList = weapon.ascension.map(({ count, icon }) => {
     const materialID = icon.split("_").at(-1);
-    if (!materials || !materialID || isNaN(Number(materialID)))
+    if (
+      !materials ||
+      !materialID ||
+      isNaN(Number(materialID)) ||
+      !materials[materialID]
+    )
       return {
         id: "-1",
         name: "???",

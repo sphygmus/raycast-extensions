@@ -62,9 +62,10 @@
 		}
 	],
 	"platforms": [
+		"macOS",
 		"Windows"
 	],
 	"categories": [
-		"Web"
+		"Fun"
 	]
 }

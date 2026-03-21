@@ -4,4 +4,6 @@ All notable changes to the Lunaris extension will be documented in this file.
 
 ---
 
-## [Initial Release] - {PR_MERGE_DATE}
+## [Bug fixes & update to package.json] - (22/03/2026)
+
+## [Initial Release] - (22/03/2026)
