@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getPreferenceValues, Grid } from "@raycast/api";
-import { useCachedState, usePromise } from "@raycast/utils";
+import { useCachedPromise, useCachedState } from "@raycast/utils";
 
 import { getAllCharacters } from "@/lib/utils/lunaris";
 import { WEAPON_TYPE } from "@/lib/constants";
@@ -8,7 +8,7 @@ import { WEAPON_TYPE } from "@/lib/constants";
 import CharacterGridItem from "@/components/character/character-grid-item";
 
 export default function Command() {
-  const { isLoading, data: characters } = usePromise(getAllCharacters);
+  const { isLoading, data: characters } = useCachedPromise(getAllCharacters);
   const [pinned, setPinned] = useCachedState<string[]>("pinned_characters", []);
   const preferences = getPreferenceValues<Preferences>();
   const [filter, setFilter] = useState<string>("All");

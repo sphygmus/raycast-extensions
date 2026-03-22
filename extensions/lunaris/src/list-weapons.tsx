@@ -6,7 +6,7 @@ import {
   Icon,
   List,
 } from "@raycast/api";
-import { useCachedState, usePromise } from "@raycast/utils";
+import { useCachedPromise, useCachedState } from "@raycast/utils";
 
 import { getAllWeapons } from "@/lib/utils/lunaris";
 import { RARITY, RARITY_COLORS_RAYCAST, WEAPON_TYPE } from "@/lib/constants";
@@ -15,7 +15,7 @@ import WeaponDetail from "@/components/weapon/weapon-detail";
 import WeaponAscensionMaterials from "@/components/weapon/weapon-ascension-mats";
 
 export default function Command() {
-  const { isLoading, data: weapons } = usePromise(getAllWeapons);
+  const { isLoading, data: weapons } = useCachedPromise(getAllWeapons);
   const preferences = getPreferenceValues<Preferences>();
   const [pinned, setPinned] = useCachedState<string[]>("pinned_weapons", []);
   const [filter, setFilter] = useState<string>("All");

@@ -1,5 +1,5 @@
 import { Color, List } from "@raycast/api";
-import { usePromise } from "@raycast/utils";
+import { useCachedPromise } from "@raycast/utils";
 
 import { getGameVersion } from "@/lib/utils/lunaris";
 import { RARITY, RARITY_COLORS, WEAPON_TYPE } from "@/lib/constants";
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function WeaponDetail({ id, weapon, refinementLevel }: Props) {
-  const { isLoading, data } = usePromise(async () => {
+  const { isLoading, data } = useCachedPromise(async () => {
     const gameVersion = await getGameVersion();
     if (!gameVersion) return undefined;
 
@@ -34,13 +34,19 @@ export default function WeaponDetail({ id, weapon, refinementLevel }: Props) {
 # ${weapon.enName}
 ${data.weaponDesc ?? ""}
 
+${
+  data.passive
+    ? `
 ## ${data.passive.name} (Passive) (R${refinementLevel})
 ${data.passive.refinements[refinementLevel]
   .replace(/<color=[^>]+>(.*?)<\/color>/gi, "**$1**")
   .replace(/\{LINK#[^}]+\}(.*?)\{\/LINK\}/gi, "_$1_")
   .replace(/\\n/g, "\n\n")
   .replace(/<[^>]*>/g, "")
-  .trim()}
+  .trim()}	
+`
+    : ""
+}
 			`
       }
       metadata={

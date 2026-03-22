@@ -13,6 +13,7 @@ Raycast extension for **Genshin Impact** players. Quickly look up character info
 - **Characters**: View base stats, skills, constellations, and upgrade materials.
 - **Weapons**: Check stats, passive effects, ascension materials, and refinements at a glance.
 - **Artifacts**: View 2-piece and 4-piece bonuses for all sets.
+- **Banners**: View past and current banner information.
 
 ---
 

@@ -37,3 +37,13 @@ export const getMaterials = () =>
   fetchVersionedData<MaterialItemMap>("materiallist.json");
 export const getArtifacts = () =>
   fetchVersionedData<ArtifactsMap>("artifactlist.json");
+export const getBanners = async () => {
+  try {
+    const res = await fetch("https://lunaris.moe/data/banners.json");
+    if (!res.ok) return undefined;
+
+    return (await res.json()) as BannersMap;
+  } catch {
+    return undefined;
+  }
+};

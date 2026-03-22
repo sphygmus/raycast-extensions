@@ -5,14 +5,14 @@ import {
   Icon,
   List,
 } from "@raycast/api";
-import { useCachedState, usePromise } from "@raycast/utils";
+import { useCachedPromise, useCachedState } from "@raycast/utils";
 
 import { getArtifacts } from "@/lib/utils/lunaris";
 import { RARITY, RARITY_COLORS_RAYCAST } from "@/lib/constants";
 import { useState } from "react";
 
 export default function Command() {
-  const { isLoading, data: artifacts } = usePromise(getArtifacts);
+  const { isLoading, data: artifacts } = useCachedPromise(getArtifacts);
   const preferences = getPreferenceValues<Preferences>();
   const [pinned, setPinned] = useCachedState<string[]>("pinned_artifacts", []);
   const [filter, setFilter] = useState<string>("All");

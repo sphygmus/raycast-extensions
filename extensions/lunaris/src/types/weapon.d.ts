@@ -24,7 +24,7 @@ interface GenshinWeaponDetail {
     count: number;
     icon: string;
   }[];
-  passive: {
+  passive?: {
     name: string;
     refinements: Record<string, string>;
   };
