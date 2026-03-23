@@ -4,7 +4,7 @@
 
 # 🌙 Lunaris for Raycast
 
-Raycast extension for **Genshin Impact** players. Quickly look up character information, weapon stats, and artifact set bonuses using data from [Lunaris](https://lunaris.moe/).
+Raycast extension for **Genshin Impact** players. Quickly look up character information, weapon stats, artifact set bonuses and banner information using data from [Lunaris](https://lunaris.moe/).
 
 ---
 

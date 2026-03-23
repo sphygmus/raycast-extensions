@@ -1,11 +1,12 @@
-# 🌙 Lunaris Extension Changelog
+# Lunaris Extension Changelog
 
 All notable changes to the Lunaris extension will be documented in this file.
 
----
+## [Added version banner information] - {PR_MERGE_DATE}
 
-## [Added version banner information] - (22/03/2026)
+- Add new command to view past and current banner information.
+- Update data loading to cache incoming data for app performance.
 
-## [Bug fixes & update to package.json] - (22/03/2026)
+## [Added Lunaris] - 2026-03-21
 
-## [Initial Release] - (22/03/2026)
+- Initial version
