@@ -11,7 +11,7 @@ import {
   getBanners,
   getGameVersion,
 } from "./lib/utils/lunaris";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SingleCharacter from "./components/character/single-character";
 
 export default function Command() {
@@ -48,10 +48,16 @@ export default function Command() {
     banners && banners[0] ? banners[0].version : null,
   );
 
+  useEffect(() => {
+    if (banners && banners.length > 0 && !selectedVersion) {
+      setSelectedVersion(banners[0].version);
+    }
+  }, [banners]);
+
   const activeBanner = useMemo(() => {
     if (!banners) return;
     return banners.find((b) => b.version === selectedVersion);
-  }, [selectedVersion]);
+  }, [selectedVersion, banners]);
 
   return (
     <Grid
@@ -59,7 +65,7 @@ export default function Command() {
       columns={4}
       fit={Grid.Fit.Fill}
       aspectRatio="9/16"
-      navigationTitle={`Banners / ${selectedVersion}`}
+      navigationTitle={`Banners / ${selectedVersion || "Loading..."}`}
       searchBarAccessory={
         <Grid.Dropdown
           tooltip="Select version"
