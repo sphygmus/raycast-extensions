@@ -18,6 +18,7 @@ export default function WeaponDetail({ id, weapon, refinementLevel }: Props) {
     const res = await fetch(
       `https://api.lunaris.moe/data/${gameVersion}/en/weapon/${id}.json`,
     );
+    if (!res.ok) return undefined;
     const characterData = (await res.json()) as GenshinWeaponDetail;
     return characterData;
   });

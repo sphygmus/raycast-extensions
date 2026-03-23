@@ -12,6 +12,7 @@ export default function WeaponAscensionMaterials({ id }: Props) {
     const res = await fetch(
       `https://api.lunaris.moe/data/${gameVersion}/en/weapon/${id}.json`,
     );
+    if (!res.ok) return undefined;
     const characterData = (await res.json()) as GenshinWeaponDetail;
     return characterData;
   });

@@ -20,6 +20,7 @@ export default function SingleCharacter({ id, character }: Props) {
     const res = await fetch(
       `https://api.lunaris.moe/data/${gameVersion}/en/char/${id}.json`,
     );
+    if (!res.ok) return undefined;
     const characterData = (await res.json()) as GenshinCharacterSingle;
     return characterData;
   });

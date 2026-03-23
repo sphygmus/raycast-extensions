@@ -13,6 +13,7 @@ import {
 } from "./lib/utils/lunaris";
 import { useEffect, useMemo, useState } from "react";
 import SingleCharacter from "./components/character/single-character";
+import { API_ENDPOINT } from "./lib/constants";
 
 export default function Command() {
   const preferences = getPreferenceValues<Preferences>();
@@ -86,32 +87,42 @@ export default function Command() {
         characters &&
         selectedVersion &&
         activeBanner.characters.map((id) => (
-          <Grid.Item
-            key={id}
-            title={characters[id.toString()].enName}
-            content={{
-              source: `https://api.lunaris.moe/data/assets/gachaicon/${characters[id.toString()].GachaImg.replace("UI_Gacha_AvatarImg_", "UI_Gacha_AvatarIcon_")}.webp`,
-            }}
-            accessory={{
-              icon: `elements/${characters[id.toString()].element === "Unknown" ? "adaptive" : characters[id.toString()].element.toLowerCase()}.png`,
-              tooltip: characters[id.toString()].element,
-            }}
-            actions={
-              <ActionPanel>
-                <Action.Push
-                  title="Detailed Information"
-                  icon={Icon.Person}
-                  target={
-                    <SingleCharacter
-                      id={id.toString()}
-                      character={characters[id.toString()]}
-                    />
-                  }
-                />
-              </ActionPanel>
-            }
-          />
+          <GridCharacterItem key={id} characters={characters} id={id} />
         ))}
     </Grid>
+  );
+}
+
+type GridCharacterItemProps = {
+  characters: CharactersMap;
+  id: number;
+};
+
+function GridCharacterItem({ characters, id }: GridCharacterItemProps) {
+  const character = characters[id.toString()];
+  if (!character) return null;
+
+  return (
+    <Grid.Item
+      title={character.enName}
+      content={{
+        source: `${API_ENDPOINT}/assets/gachaicon/${character.GachaImg.replace("UI_Gacha_AvatarImg_", "UI_Gacha_AvatarIcon_")}.webp`,
+      }}
+      accessory={{
+        icon: `elements/${character.element === "Unknown" ? "adaptive" : character.element.toLowerCase()}.png`,
+        tooltip: character.element,
+      }}
+      actions={
+        <ActionPanel>
+          <Action.Push
+            title="Detailed Information"
+            icon={Icon.Person}
+            target={
+              <SingleCharacter id={id.toString()} character={character} />
+            }
+          />
+        </ActionPanel>
+      }
+    />
   );
 }
